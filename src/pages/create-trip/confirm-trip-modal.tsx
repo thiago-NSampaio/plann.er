@@ -39,8 +39,8 @@ export function ConfirmTripModal({
           <div className="h-14 px-5 bg-zinc-95- border border-zinc-800 rounded-lg flex items-center gap-2">
             <User className="size-5 text-zinc-400" />
             <input
-              type="email"
-              name="email"
+              type="text"
+              name="name"
               placeholder="Digite seu nome completo"
               className="bg-transparent text-lg placeholder-zinc-400 flex-1 outline-none focus:outline-none"
             />
