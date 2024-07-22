@@ -6,10 +6,13 @@ import { Guests } from "./guests";
 import { Activities } from "./activities";
 import { DestinationAndDateHeader } from "./destination-and-date-header";
 import { Button } from "../../components/button";
+import { CreateLinkModal } from "./create-link-modal";
 
 export function TripDetailsPage() {
   const [isOpenCreateActivityModal, SetIsOpenCreateActivityModal] =
     useState(false);
+
+  const [isOpenCreateLinkModal, SetIsOpenCreateLinkModal] = useState(false);
 
   function openCreateActivityModal() {
     SetIsOpenCreateActivityModal(true);
@@ -19,10 +22,20 @@ export function TripDetailsPage() {
     SetIsOpenCreateActivityModal(false);
   }
 
+  function openCreateLinkModal() {
+    SetIsOpenCreateLinkModal(true);
+  }
+
+  function closeCreateLinkModal() {
+    SetIsOpenCreateLinkModal(false);
+  }
+
   function createActivity(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+  }
 
-    // const data = new FormData(e.currentTarget)
+  function createLink(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
   }
 
   return (
@@ -40,7 +53,7 @@ export function TripDetailsPage() {
           <Activities />
         </div>
         <div className="w-80 space-y-6">
-          <ImportantLinks />
+          <ImportantLinks openCreateLinkModal={openCreateLinkModal} />
           <div className="w-full h-px bg-zinc-800" />
           <Guests />
         </div>
@@ -50,6 +63,13 @@ export function TripDetailsPage() {
         <CreateActivityModal
           closeCreateActivityModal={closeCreateActivityModal}
           createActivity={createActivity}
+        />
+      )}
+
+      {isOpenCreateLinkModal && (
+        <CreateLinkModal
+          closeCreateLinkModal={closeCreateLinkModal}
+          createLink={createLink}
         />
       )}
     </div>

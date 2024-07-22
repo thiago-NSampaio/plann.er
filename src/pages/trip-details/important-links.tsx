@@ -1,7 +1,11 @@
 import { Link2, Plus } from "lucide-react";
 import { Button } from "../../components/button";
 
-export function ImportantLinks() {
+interface ImportantLinksProps {
+  openCreateLinkModal: () => void;
+}
+
+export function ImportantLinks({ openCreateLinkModal }: ImportantLinksProps) {
   return (
     <div className="space-y-6">
       <h2 className="font-semibold text-xl">Links importantes</h2>
@@ -36,7 +40,7 @@ export function ImportantLinks() {
           <Link2 className="text-zinc-400 size-5 shrink-0" />
         </div>
       </div>
-      <Button variant="secondary" size="full">
+      <Button onClick={openCreateLinkModal} variant="secondary" size="full">
         <Plus className="size-5" />
         Cadastrar novo link
       </Button>
