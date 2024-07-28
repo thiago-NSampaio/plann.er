@@ -40,7 +40,7 @@ export function ConfirmTripModal({
         <div className="w-full h-px bg-zinc-800" />
 
         <form onSubmit={createTrip} className="space-y-3">
-          <div className="h-14 px-5 bg-zinc-95- border border-zinc-800 rounded-lg flex items-center gap-2">
+          <div className="h-14 px-5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
             <User className="size-5 text-zinc-400" />
             <input
               type="text"
@@ -51,7 +51,7 @@ export function ConfirmTripModal({
             />
           </div>
 
-          <div className="h-14 px-5 bg-zinc-95- border border-zinc-800 rounded-lg flex items-center gap-2">
+          <div className="h-14 px-5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
             <AtSign className="size-5 text-zinc-400" />
             <input
               type="email"

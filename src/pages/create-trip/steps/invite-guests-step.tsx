@@ -21,7 +21,7 @@ export function InviteGuestsStep({
         <UserRoundPlus className="size-5 text-zinc-400" />
         {emailsToInvite.length > 0 ? (
           <span className="text-zinc-400 flex-1 text-left">
-            {emailsToInvite.length} pessoas(s) convidada(s)
+            {emailsToInvite.length} pessoa(s) convidada(s)
           </span>
         ) : (
           <span className="text-zinc-400 flex-1 text-left">

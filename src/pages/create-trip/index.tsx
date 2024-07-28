@@ -22,7 +22,13 @@ export function CreateTripPage() {
   >();
 
   function openGuestsInput() {
-    setIsGuestsInputOpen(true);
+    if (
+      destination &&
+      eventStartAndEndDates?.from &&
+      eventStartAndEndDates?.to
+    ) {
+      setIsGuestsInputOpen(true);
+    }
   }
 
   function closeGuestsInput() {
@@ -91,26 +97,18 @@ export function CreateTripPage() {
       return;
     }
 
-    console.log(
-      destination,
-      ownerEmail,
-      ownerName,
-      emailsToInvite,
-      eventStartAndEndDates
-    );
-
     const response = await api.post("/trips", {
       destination,
-      starts_at: eventStartAndEndDates.from,
-      ends_at: eventStartAndEndDates.to,
+      start_date: eventStartAndEndDates.from,
+      end_date: eventStartAndEndDates.to,
       emails_to_invite: emailsToInvite,
       owner_name: ownerName,
       owner_email: ownerEmail,
     });
 
-    const { tripId } = response.data;
+    const { id } = response.data;
 
-    navigate(`/trips/${tripId}`);
+    navigate(`/trips/${id}`);
   }
 
   return (

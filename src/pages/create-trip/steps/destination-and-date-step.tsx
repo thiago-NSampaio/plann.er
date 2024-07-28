@@ -84,6 +84,11 @@ export function DestinationAndDateStep({
               mode="range"
               selected={eventStartAndEndDates}
               onSelect={setEventStartAndEndDates}
+              footer={
+                eventStartAndEndDates?.from && eventStartAndEndDates?.to
+                  ? `Selecionado: ${eventStartAndEndDates.from.toLocaleDateString()} a ${eventStartAndEndDates.to.toLocaleDateString()}`
+                  : "Escolha uma data"
+              }
             />
           </div>
         </div>

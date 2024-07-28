@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { CreateActivityModal } from "./create-activity-modal";
 import { ImportantLinks } from "./important-links";
 import { Guests } from "./guests";
@@ -30,14 +30,6 @@ export function TripDetailsPage() {
     SetIsOpenCreateLinkModal(false);
   }
 
-  function createActivity(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-  }
-
-  function createLink(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-  }
-
   return (
     <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
       <DestinationAndDateHeader />
@@ -62,15 +54,11 @@ export function TripDetailsPage() {
       {isOpenCreateActivityModal && (
         <CreateActivityModal
           closeCreateActivityModal={closeCreateActivityModal}
-          createActivity={createActivity}
         />
       )}
 
       {isOpenCreateLinkModal && (
-        <CreateLinkModal
-          closeCreateLinkModal={closeCreateLinkModal}
-          createLink={createLink}
-        />
+        <CreateLinkModal closeCreateLinkModal={closeCreateLinkModal} />
       )}
     </div>
   );
