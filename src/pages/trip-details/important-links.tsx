@@ -41,7 +41,7 @@ export function ImportantLinks({ openCreateLinkModal }: ImportantLinksProps) {
                 {link.title}
               </span>
               <a
-                href={link.url} // Usar link.url como o href
+                href={link.url}
                 className="block text-xs text-zinc-400 truncate hover:text-zinc-200"
               >
                 {link.url}

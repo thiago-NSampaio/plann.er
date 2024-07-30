@@ -74,7 +74,6 @@ export function CreateTripPage() {
     const newEmailList = emailsToInvite.filter(
       (email) => email !== emailToRemove
     );
-
     setEmailsToInvite(newEmailList);
   }
 
@@ -86,10 +85,6 @@ export function CreateTripPage() {
     }
 
     if (!eventStartAndEndDates?.from || !eventStartAndEndDates?.to) {
-      return;
-    }
-
-    if (emailsToInvite.length === 0) {
       return;
     }
 
@@ -164,14 +159,18 @@ export function CreateTripPage() {
         />
       )}
 
-      {isConfirmTripModalOpen && (
-        <ConfirmTripModal
-          closeConfirmTripModal={closeConfirmTripModal}
-          createTrip={createTrip}
-          setOwnerName={setOwnerName}
-          setOwnerEmail={setOwnerEmail}
-        />
-      )}
+      {isConfirmTripModalOpen &&
+        eventStartAndEndDates?.from &&
+        eventStartAndEndDates?.to && (
+          <ConfirmTripModal
+            closeConfirmTripModal={closeConfirmTripModal}
+            createTrip={createTrip}
+            setOwnerName={setOwnerName}
+            setOwnerEmail={setOwnerEmail}
+            destination={destination}
+            tripDate={eventStartAndEndDates}
+          />
+        )}
     </div>
   );
 }
