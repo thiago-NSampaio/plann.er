@@ -24,8 +24,6 @@ export function ImportantLinks({ openCreateLinkModal }: ImportantLinksProps) {
     });
   }, [tripId]);
 
-  console.log(links);
-
   return (
     <div className="space-y-6">
       <h2 className="font-semibold text-xl">Links importantes</h2>
