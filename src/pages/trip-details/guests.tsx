@@ -44,6 +44,7 @@ export function Guests() {
         email: guestEmail,
       });
       setParticipants([...participants, response.data.participant]);
+      window.document.location.reload();
     } catch (e) {
       console.error(e);
     }

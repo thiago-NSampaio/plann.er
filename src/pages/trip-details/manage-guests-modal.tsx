@@ -2,6 +2,7 @@ import { User, AtSign, TrashIcon, UserPlus2 } from "lucide-react";
 import { Button } from "../../components/button";
 import { FormEvent, useState } from "react";
 import { Modal } from "../../components/modal";
+import { InputField } from "../../components/inputField";
 
 interface Participant {
   id: string;
@@ -42,24 +43,24 @@ export function ManageGuestModal({
         </Button>
         {isBoxAddGuestOpen && (
           <>
-            <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+            <InputField
+              type="text"
+              name="guest_name"
+              placeholder="Nome do convidado"
+              required
+            >
               <User className="size-5 text-zinc-400" />
-              <input
-                type="text"
-                name="guest_name"
-                placeholder="Nome do convidado"
-                className="bg-transparent text-lg placeholder-zinc-200 flex-1 outline-none focus:outline-none"
-              />
-            </div>
-            <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+            </InputField>
+
+            <InputField
+              type="email"
+              name="guest_email"
+              placeholder="Email do convidado"
+              required
+            >
               <AtSign className="size-5 text-zinc-400" />
-              <input
-                type="email"
-                name="guest_email"
-                placeholder="Email do convidado"
-                className="bg-transparent text-lg placeholder-zinc-200 flex-1 outline-none focus:outline-none"
-              />
-            </div>
+            </InputField>
+
             <Button type="submit" size="full">
               Adicionar
             </Button>

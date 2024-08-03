@@ -4,6 +4,7 @@ import { Button } from "../../components/button";
 import { DateRange } from "react-day-picker";
 import { format } from "date-fns";
 import { Modal } from "../../components/modal";
+import { InputField } from "../../components/inputField";
 
 interface ConfirmTripModalProps {
   closeConfirmTripModal: () => void;
@@ -34,7 +35,7 @@ export function ConfirmTripModal({
         {tripDate.from && tripDate.to
           ? " a ".concat(format(tripDate.to, "d' de 'LLL"))
           : ""}
-      </span>
+      </span>{" "}
       preencha seus dados abaixo:
     </p>
   );
@@ -46,27 +47,24 @@ export function ConfirmTripModal({
       closeModal={closeConfirmTripModal}
     >
       <form onSubmit={createTrip} className="space-y-3">
-        <div className="h-14 px-5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+        <InputField
+          type="text"
+          name="name"
+          placeholder="Digite seu nome completo"
+          onChange={(e) => setOwnerName(e.target.value)}
+        >
           <User className="size-5 text-zinc-400" />
-          <input
-            type="text"
-            name="name"
-            placeholder="Digite seu nome completo"
-            className="bg-transparent text-lg placeholder-zinc-400 flex-1 outline-none focus:outline-none"
-            onChange={(e) => setOwnerName(e.target.value)}
-          />
-        </div>
+        </InputField>
 
-        <div className="h-14 px-5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+        <InputField
+          type="email"
+          name="name"
+          placeholder="Seu e-mail pessoal"
+          onChange={(e) => setOwnerEmail(e.target.value)}
+        >
           <AtSign className="size-5 text-zinc-400" />
-          <input
-            type="email"
-            name="email"
-            placeholder="Seu e-mail pessoal"
-            className="bg-transparent text-lg placeholder-zinc-400 flex-1 outline-none focus:outline-none"
-            onChange={(e) => setOwnerEmail(e.target.value)}
-          />
-        </div>
+        </InputField>
+
         <Button type="submit" size="full">
           Confirmar criação de viagem
         </Button>

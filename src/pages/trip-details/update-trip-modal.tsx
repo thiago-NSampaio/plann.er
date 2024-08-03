@@ -6,6 +6,7 @@ import { useState } from "react";
 import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
 import { Modal } from "../../components/modal";
+import { InputField } from "../../components/inputField";
 
 interface UpdateTripModalProps {
   closeUpdateTripModal: () => void;
@@ -69,16 +70,16 @@ export function UpdateTripModal({
       widthModal={360}
     >
       <form onSubmit={updateTrip} className="space-y-3">
-        <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+        <InputField
+          type="text"
+          name="new_destination"
+          placeholder="Novo local"
+          defaultValue={tripDateAndDestination?.destination}
+          required
+        >
           <MapPin className="size-5 text-zinc-400" />
-          <input
-            type="text"
-            name="new_destination"
-            placeholder="Novo local"
-            className="bg-transparent text-lg placeholder-zinc-200 flex-1 outline-none focus:outline-none"
-            defaultValue={tripDateAndDestination?.destination}
-          />
-        </div>
+        </InputField>
+
         <div className="bg-zinc-950 border border-zinc-800 rounded-lg overflow-hidden">
           {tripDateAndDestination && (
             <DayPicker

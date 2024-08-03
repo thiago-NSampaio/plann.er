@@ -4,6 +4,7 @@ import { Button } from "../../components/button";
 import { useParams } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { Modal } from "../../components/modal";
+import { InputField } from "../../components/inputField";
 
 interface CreateActivityModalProps {
   closeCreateActivityModal: () => void;
@@ -37,25 +38,17 @@ export function CreateActivityModal({
       widthModal={600}
     >
       <form onSubmit={createActivity} className="space-y-3">
-        <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+        <InputField type="text" name="title" placeholder="Qual a atividade?">
           <Tag className="size-5 text-zinc-400" />
-          <input
-            type="text"
-            name="title"
-            placeholder="Qual a atividade?"
-            className="bg-transparent text-lg placeholder-zinc-200 flex-1 outline-none focus:outline-none"
-          />
-        </div>
+        </InputField>
 
-        <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+        <InputField
+          type="datetime-local"
+          name="occurs_at"
+          placeholder="Seu e-mail pessoal"
+        >
           <Calendar className="size-5 text-zinc-400" />
-          <input
-            type="datetime-local"
-            name="occurs_at"
-            placeholder="Seu e-mail pessoal"
-            className="bg-transparent text-lg placeholder-zinc-400 flex-1 outline-none focus:outline-none"
-          />
-        </div>
+        </InputField>
 
         <Button type="submit" size="full">
           Salvar atividade

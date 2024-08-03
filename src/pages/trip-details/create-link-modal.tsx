@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { FormEvent } from "react";
 import { Modal } from "../../components/modal";
+import { InputField } from "../../components/inputField";
 
 interface ComfirmTripModalProps {
   closeCreateLinkModal: () => void;
@@ -36,27 +37,18 @@ export function CreateLinkModal({
       widthModal={540}
     >
       <form onSubmit={createLink} className="space-y-3">
-        <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+        <InputField
+          type="text"
+          name="title"
+          placeholder="Título do link"
+          required
+        >
           <Tag className="size-5 text-zinc-400" />
-          <input
-            type="text"
-            name="title"
-            placeholder="Título do link"
-            className="bg-transparent text-lg placeholder-zinc-200 flex-1 outline-none focus:outline-none"
-            required
-          />
-        </div>
+        </InputField>
 
-        <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+        <InputField type="text" name="url" placeholder="URL" required>
           <Link2 className="size-5 text-zinc-400" />
-          <input
-            type="text"
-            name="url"
-            placeholder="URL"
-            className="bg-transparent text-lg placeholder-zinc-200 flex-1 outline-none focus:outline-none"
-            required
-          />
-        </div>
+        </InputField>
 
         <Button type="submit" size="full">
           Salvar Link
