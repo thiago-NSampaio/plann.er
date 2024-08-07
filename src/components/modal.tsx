@@ -29,7 +29,11 @@ export function Modal({
               <X className="size-5 text-zinc-400" />
             </button>
           </div>
-          <p className="text-sm text-zinc-400">{subtitleModal}</p>
+          {typeof subtitleModal === "string" ? (
+            <p className="text-sm text-zinc-400">{subtitleModal}</p>
+          ) : (
+            <div className="text-sm text-zinc-400">{subtitleModal}</div>
+          )}
         </div>
         <div className="w-full h-px bg-zinc-800" />
         {children}

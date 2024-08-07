@@ -33,8 +33,8 @@ export function UpdateTripModal({
       const tripData = response.data.trip;
       setTripDateAndDestination(tripData);
       setEventStartAndEndDatesUpdate({
-        from: new Date(tripData.starts_at),
-        to: new Date(tripData.ends_at),
+        from: new Date(tripData.start_date),
+        to: new Date(tripData.end_date),
       });
     });
   }, [tripId]);

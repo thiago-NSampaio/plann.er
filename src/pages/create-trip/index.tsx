@@ -100,7 +100,6 @@ export function CreateTripPage() {
       owner_name: ownerName,
       owner_email: ownerEmail,
     });
-
     const { id } = response.data;
 
     navigate(`/trips/${id}`);

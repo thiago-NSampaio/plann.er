@@ -24,21 +24,24 @@ export function ConfirmTripModal({
   tripDate,
 }: ConfirmTripModalProps) {
   const subtitle = (
-    <p className="text-sm text-zinc-400">
-      Para concluir a criação da viagem para{" "}
-      <span className="font-semibold text-zinc-100">{destination}</span> nas
-      datas de{" "}
-      <span className="font-semibold text-zinc-100">
-        {tripDate.from
-          ? format(tripDate.from, "d' de 'LLL")
-          : "Data de início não definida"}
-        {tripDate.from && tripDate.to
-          ? " a ".concat(format(tripDate.to, "d' de 'LLL"))
-          : ""}
-      </span>{" "}
-      preencha seus dados abaixo:
-    </p>
+    <div className="text-sm text-zinc-400">
+      <p>
+        Para concluir a criação da viagem para{" "}
+        <span className="font-semibold text-zinc-100">{destination}</span> nas
+        datas de{" "}
+        <span className="font-semibold text-zinc-100">
+          {tripDate.from
+            ? format(tripDate.from, "d' de 'LLL")
+            : "Data de início não definida"}
+          {tripDate.from && tripDate.to
+            ? " a ".concat(format(tripDate.to, "d' de 'LLL"))
+            : ""}
+        </span>{" "}
+        preencha seus dados abaixo:
+      </p>
+    </div>
   );
+
   return (
     <Modal
       titleModal="Confirmar criação da viagem"

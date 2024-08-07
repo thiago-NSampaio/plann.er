@@ -38,16 +38,12 @@ export function Guests() {
     const guestName = data.get("guest_name")?.toString();
     const guestEmail = data.get("guest_email")?.toString();
 
-    try {
-      const response = await api.post(`/trips/${tripId}/invites`, {
-        name: guestName,
-        email: guestEmail,
-      });
-      setParticipants([...participants, response.data.participant]);
-      window.document.location.reload();
-    } catch (e) {
-      console.error(e);
-    }
+    const response = await api.post(`/trips/${tripId}/invites`, {
+      name: guestName,
+      email: guestEmail,
+    });
+    setParticipants([...participants, response.data.participant]);
+    window.document.location.reload();
   }
 
   useEffect(() => {
