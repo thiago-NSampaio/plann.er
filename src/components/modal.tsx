@@ -6,11 +6,9 @@ interface ModalProps {
   closeModal: () => void;
   subtitleModal: string | ReactNode;
   children: ReactNode;
-  widthModal: number;
 }
 
 export function Modal({
-  widthModal,
   titleModal,
   closeModal,
   subtitleModal,
@@ -18,10 +16,7 @@ export function Modal({
 }: ModalProps) {
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center overflow-auto">
-      <div
-        style={{ width: `${widthModal}px` }}
-        className="rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5"
-      >
+      <div className="rounded-xl py-5 px-6 shadow-shape bg-zinc-900 w-11/12 md:w-1/2 space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">{titleModal}</h2>

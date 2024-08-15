@@ -10,7 +10,7 @@ export function InputField({ children, ...rest }: InputFieldProps) {
       {children}
       <input
         {...rest}
-        className="bg-transparent text-lg placeholder-zinc-200 flex-1 outline-none focus:outline-none"
+        className="bg-transparent text-md placeholder-zinc-200 flex-1 outline-none focus:outline-none md:text-lg"
       />
     </div>
   );

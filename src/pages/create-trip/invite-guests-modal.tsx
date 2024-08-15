@@ -1,4 +1,4 @@
-import { ArrowRight, AtSign, X } from "lucide-react";
+import { ArrowRight, AtSign, PlusIcon, X } from "lucide-react";
 import { FormEvent } from "react";
 import { Button } from "../../components/button";
 import { Modal } from "../../components/modal";
@@ -19,7 +19,6 @@ export function InviteGuestsModal({
   return (
     <Modal
       closeModal={closeGuestsModal}
-      widthModal={640}
       titleModal="Selecionar convidados"
       subtitleModal="Os convidados irão receber emails para confirmar a participação na viagem."
     >
@@ -46,13 +45,14 @@ export function InviteGuestsModal({
           <input
             type="email"
             name="email"
-            placeholder="Digite o e-mail do convidado"
-            className="bg-transparent text-lg placeholder-zinc-400 flex-1 outline-none focus:outline-none"
+            placeholder="E-mail do convidado"
+            className="bg-transparent text-md placeholder-zinc-400 flex-1 outline-none focus:outline-none md:text-lg"
           />
         </div>
-        <Button type="submit">
-          Convidar
-          <ArrowRight className="size-5" />
+        <Button type="submit" className="flex items-center gap-2">
+          <PlusIcon className="md:hidden size-5" />
+          <span className="hidden md:inline">Convidar</span>
+          <ArrowRight className="hidden md:inline size-5" />
         </Button>
       </form>
     </Modal>

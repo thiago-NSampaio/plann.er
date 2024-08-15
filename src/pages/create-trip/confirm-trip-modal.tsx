@@ -45,7 +45,6 @@ export function ConfirmTripModal({
   return (
     <Modal
       titleModal="Confirmar criação da viagem"
-      widthModal={600}
       subtitleModal={subtitle}
       closeModal={closeConfirmTripModal}
     >

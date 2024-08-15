@@ -25,7 +25,7 @@ export function InviteGuestsStep({
               {emailsToInvite.length} pessoa(s) convidada(s)
             </span>
           ) : (
-            <span className="text-zinc-400 flex-1 text-left">
+            <span className="text-zinc-400 flex-1 text-md text-left md:text-lg">
               Quem estará na viagem?
             </span>
           )}

@@ -35,7 +35,6 @@ export function CreateActivityModal({
       closeModal={closeCreateActivityModal}
       titleModal="Cadastrar atividade"
       subtitleModal="Todos os convidados podem visualizar as atividades."
-      widthModal={600}
     >
       <form onSubmit={createActivity} className="space-y-3">
         <InputField type="text" name="title" placeholder="Qual a atividade?">

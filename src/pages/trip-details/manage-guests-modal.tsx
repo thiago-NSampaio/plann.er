@@ -33,7 +33,6 @@ export function ManageGuestModal({
   return (
     <Modal
       titleModal="Gerencie seus convidados"
-      widthModal={540}
       closeModal={closeManageGuestsModal}
       subtitleModal="Caso deseje adicionar ou remover convidados, utilize os campos abaixo."
     >

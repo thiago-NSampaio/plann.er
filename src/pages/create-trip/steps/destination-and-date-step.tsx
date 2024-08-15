@@ -106,7 +106,7 @@ export function DestinationAndDateStep({
           </Button>
         </div>
       ) : (
-        <div className="md:flex md:flex-row md:ml-2 px">
+        <div className="md:flex md:flex-row md:ml-2">
           <Button onClick={openGuestsInput} size="full">
             Continuar
             <ArrowRight className="size-5" />
