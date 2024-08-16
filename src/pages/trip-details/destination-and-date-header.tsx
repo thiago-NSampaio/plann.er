@@ -18,29 +18,12 @@ export function DestinationAndDateHeader() {
   const { tripId } = useParams();
   const [trip, setTrip] = useState<Trip | undefined>();
   const [updateTrip, setUpdateTrip] = useState(false);
-  const [collapsed, setCollapsed] = useState(true); // Start as collapsed on mobile
-  const [isMobile, setIsMobile] = useState(false); // State to track mobile screen
+  const [collapsed, setCollapsed] = useState(true);
 
   useEffect(() => {
     api.get(`trips/${tripId}`).then((response) => {
       setTrip(response.data.trip);
     });
-
-    // Check screen size to set mobile state
-    const handleResize = () => {
-      const mobileView = window.innerWidth < 768;
-      setIsMobile(mobileView);
-      setCollapsed(mobileView); // Collapse on mobile, expand on larger screens
-    };
-
-    // Initial check
-    handleResize();
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Clean up event listener on unmount
-    return () => window.removeEventListener("resize", handleResize);
   }, [tripId]);
 
   const displayedDate =
@@ -52,43 +35,54 @@ export function DestinationAndDateHeader() {
       : null;
 
   return (
-    <div className="px-4 h-16 rounded-xl bg-zinc-900 shadow-shape flex items-center justify-between">
-      {collapsed ? (
-        <div
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => setCollapsed(false)}
-        >
-          <SquareMenu className="size-5 text-zinc-400" />
+    <div className="md:px-4 md:h-16 md:rounded-xl md:bg-zinc-900 md:shadow-shape md:flex md:items-center md:justify-between">
+      {collapsed && (
+        <div className="flex items-center gap-2 md:hidden">
+          <SquareMenu
+            className="size-7 text-zinc-200 cursor-pointer"
+            onClick={() => setCollapsed(false)}
+          />
         </div>
-      ) : (
-        <div className="flex items-center justify-between w-full">
-          <div
-            className={`flex items-center gap-2 flex-1 ${
-              isMobile ? "cursor-pointer" : ""
-            }`}
-            onClick={() => isMobile && setCollapsed(true)}
-          >
-            <MapPin className="size-5 text-zinc-400" />
-            <span className="text-zinc-100">{trip?.destination}</span>
-            {isMobile && (
-              <SquareMenu className="size-5 text-zinc-400 ml-auto" />
-            )}
+      )}
+      <SquareMenu
+        className={`${
+          collapsed ? "hidden md:flex" : "flex"
+        } size-7 text-zinc-400 mb-2 cursor-pointer md:hidden`}
+        onClick={() => setCollapsed(true)}
+      />
+      <div
+        className={`${
+          collapsed ? "hidden md:flex" : "flex"
+        } grid space-y-2 md:flex-row md:items-center md:justify-between md:w-full md:space-y-0 md:flex md:border-none`}
+      >
+        <div className="flex items-center gap-2 flex-1 border border-zinc-900 hover:border-zinc-500 bg-zinc-800 rounded-lg p-2 md:p-0 md:bg-zinc-900 md:border-none">
+          <MapPin className="size-5 text-zinc-400" />
+          <span className="text-zinc-100">{trip?.destination}</span>
+        </div>
+
+        <div className="flex flex-col gap-2 md:flex-row md:items-center md:ml-auto">
+          <div className="flex items-center gap-2 border border-zinc-900 hover:border-zinc-500 bg-zinc-800 rounded-lg p-2 md:p-0 md:bg-zinc-900 md:border-none">
+            <Calendar className="size-5 text-zinc-400" />
+            <span className="text-zinc-100">{displayedDate}</span>
           </div>
 
-          <div className="flex items-center gap-5 ml-auto">
-            <div className="flex items-center gap-2">
-              <Calendar className="size-5 text-zinc-400" />
-              <span className="text-zinc-100 mr-auto">{displayedDate}</span>
-            </div>
-            <div className="w-px h-6 bg-zinc-800" />
+          <div
+            onClick={() => setUpdateTrip(true)}
+            className="flex items-center gap-2 border border-zinc-900 hover:border-zinc-500 bg-zinc-800 rounded-lg p-2 cursor-pointer md:bg-zinc-900 hover:bg-zinc-700  md:border-none md:p-0 md:hidden"
+          >
+            <Settings2 className="size-5 text-zinc-400" />
+            <span className="text-zinc-100">Alterar local/data</span>
+          </div>
+          <div className="md:w-px md:h-6 md:bg-zinc-800" />
 
+          <div className="hidden md:flex md:items-center md:gap-5 md:ml-auto">
             <Button onClick={() => setUpdateTrip(true)} variant="secondary">
               Alterar local/data
-              <Settings2 className="size-5" />
+              <Settings2 className="size-5 text-zinc-400" />
             </Button>
           </div>
         </div>
-      )}
+      </div>
 
       {updateTrip && (
         <UpdateTripModal closeUpdateTripModal={() => setUpdateTrip(false)} />

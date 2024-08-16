@@ -34,7 +34,6 @@ export function CreateLinkModal({
       titleModal="Cadastrar link"
       subtitleModal="Todos os convidados podem visualizar os links importantes."
       closeModal={closeCreateLinkModal}
-      widthModal={540}
     >
       <form onSubmit={createLink} className="space-y-3">
         <InputField
