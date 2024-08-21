@@ -23,13 +23,19 @@ export function CreateActivityModal({
     const title = data.get("title")?.toString();
     const occurs_at = data.get("occurs_at")?.toString();
 
-    await api.post(`/trips/${tripId}/activities`, {
-      title,
-      occurs_at,
-    });
+    try {
+      await api.post(`/trips/${tripId}/activities`, {
+        title,
+        occurs_at,
+      });
 
-    document.location.reload();
+      document.location.reload();
+    } catch (error) {
+      console.error("Erro ao criar atividade:", error);
+      alert("Erro ao criar atividade. Por favor, tente novamente.");
+    }
   }
+
   return (
     <Modal
       closeModal={closeCreateActivityModal}
