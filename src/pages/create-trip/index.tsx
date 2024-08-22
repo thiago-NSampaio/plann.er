@@ -21,6 +21,10 @@ export function CreateTripPage() {
     DateRange | undefined
   >();
 
+  function handleCityClick(cityName: string, cityCountry: string) {
+    setDestination(cityName + ", " + cityCountry);
+  }
+
   function openGuestsInput() {
     if (
       destination &&
@@ -120,7 +124,7 @@ export function CreateTripPage() {
             closeGuestsInput={closeGuestsInput}
             isGuestsInputOpen={isGuestsInputOpen}
             openGuestsInput={openGuestsInput}
-            setDestination={setDestination}
+            handleCityClick={handleCityClick}
             setEventStartAndEndDates={setEventStartAndEndDates}
             eventStartAndEndDates={eventStartAndEndDates}
           />

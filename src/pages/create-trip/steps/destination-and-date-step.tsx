@@ -4,21 +4,22 @@ import { useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { format } from "date-fns";
+import { CitySearch } from "./citySearch";
 
 interface DestinationAndDateStepProps {
   isGuestsInputOpen: boolean;
   eventStartAndEndDates: DateRange | undefined;
   closeGuestsInput: () => void;
   openGuestsInput: () => void;
-  setDestination: (destination: string) => void;
   setEventStartAndEndDates: (dates: DateRange | undefined) => void;
+  handleCityClick: (cityName: string, cityCountry: string) => void;
 }
 
 export function DestinationAndDateStep({
   closeGuestsInput,
   isGuestsInputOpen,
   openGuestsInput,
-  setDestination,
+  handleCityClick,
   setEventStartAndEndDates,
   eventStartAndEndDates,
 }: DestinationAndDateStepProps) {
@@ -42,30 +43,25 @@ export function DestinationAndDateStep({
       : null;
 
   return (
-    <div className="space-y-3 md:shadow-shape md:items-center md:rounded-xl md:px-2 md:flex md:h- md:bg-zinc-900 md:flex-row">
+    <div className="space-y-3 md:shadow-shape md:items-center md:rounded-xl md:h-16 md:px-2 md:flex md:py-0 md:bg-zinc-900 md:flex-row">
       <div className="border border-zinc-700 py-3 px-4 flex rounded-md bg-zinc-900 gap-2 md:border-none md:basis-1/3">
         <MapPin className="size-5 text-zinc-400" />
-        <input
-          disabled={isGuestsInputOpen}
-          type="text"
-          placeholder="Para onde você vai?"
-          className="bg-transparent text-md placeholder-zinc-400 outline-none md:flex-1 md:text-lg"
-          onChange={(event) => setDestination(event.target.value)}
+        <CitySearch
+          handleCityClick={handleCityClick}
+          isGuestsInputOpen={isGuestsInputOpen}
         />
       </div>
-      {/* <div className="border border-zinc-700 py-3 px-4 flex rounded-md bg-zinc-900 gap-2 md:flex md:flex-row md:justify-center md:flex-1 md:border-none"> */}
       <button
         disabled={isGuestsInputOpen}
-        className="border border-zinc-700 flex rounded-md py-3 px-4 w-full bg-zinc-900 gap-2 md:flex md:flex-row md:justify-center md:flex-1 md:border-none"
+        className="border border-zinc-700 flex rounded-md  py-3 px-4  w-full bg-zinc-900 gap-2 md:px-2  md:py-0 md:inline-flex md:justify-center md:flex-1 md:border-none"
         onClick={openDatePicker}
       >
         <Calendar className="size-5 text-zinc-400" />
 
-        <span className="text-md md:text-lg text-zinc-400 relative">
+        <span className="text-md text-zinc-200 flex md:text-lg">
           {displayedDate || "Quando?"}
         </span>
       </button>
-      {/* </div> */}
 
       {isDatePickerOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
