@@ -1,3 +1,5 @@
+import axios from "axios";
+
 interface City {
   name: string;
   country: string;
@@ -12,13 +14,9 @@ export async function getCities(param1: string) {
   )}&limit=5&appid=6a94f6605da631af9542b62f02bc6628`;
 
   try {
-    const response = await fetch(url);
+    const response = await axios.get(url);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = response.data;
     return data.map((city: City) => ({
       name: city.name,
       country: city.country,
