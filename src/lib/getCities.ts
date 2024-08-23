@@ -9,7 +9,7 @@ interface City {
 }
 
 export async function getCities(param1: string) {
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURI(
+  const url = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURI(
     param1
   )}&limit=5&appid=6a94f6605da631af9542b62f02bc6628`;
 
